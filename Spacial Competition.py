@@ -9,16 +9,14 @@ def expected_payoff_W(q_W, q_P, j):
     term2 = 400 * 0.5 * j * np.sum(q_P[max(j-1, 0):min(j+2, n_prices)])
     term3 = 200 * 0.5 * j * q_P[j-2] if j-2 >= 0 else 0
     term4 = 700 * 0.5 * j * q_P[j+2] if j+2 < n_prices else 0
-    term5 = 0.5 * j * np.sum(q_P[:max(j-3, 0)])
-    return term1 + term2 + term3 + term4 + term5
+    return term1 + term2 + term3 + term4 
 
 def expected_payoff_P(q_W, q_P, j):
     term1 = 1000 * 0.5 * j * np.sum(q_W[j+3:]) if j+3 < n_prices else 0
     term2 = 600 * 0.5 * j * np.sum(q_W[max(j-1, 0):min(j+2, n_prices)])
     term3 = 300 * 0.5 * j * q_W[j-2] if j-2 >= 0 else 0
     term4 = 800 * 0.5 * j * q_W[j+2] if j+2 < n_prices else 0
-    term5 = 0.5 * j * np.sum(q_W[:max(j-3, 0)])
-    return term1 + term2 + term3 + term4 + term5
+    return term1 + term2 + term3 + term4
 
 
 def equations(vars):
